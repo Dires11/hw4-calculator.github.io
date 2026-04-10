@@ -1,0 +1,122 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+.wrapper {
+    width: 320px;
+    border: 1px solid #999;
+    overflow: hidden;
+}
+
+/* ── Screen ── */
+.calculator-screen {
+    background-color: #1a1a1a;
+    padding: 16px 18px 12px;
+    min-height: 70px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.screen-display {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    word-break: break-all;
+    text-align: right;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* ── Button grid ── */
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #bbb;
+}
+
+/* All buttons share base style */
+.btn {
+    appearance: none;
+    border: none;
+    border-right: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    padding: 0;
+    height: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: filter 0.08s ease, background-color 0.08s ease;
+    /* Remove default focus outline; we rely on visual states */
+    outline: none;
+}
+
+/* Remove right border on rightmost column cells (operator column handles it) */
+.btn:nth-child(4n) {
+    border-right: none;
+}
+
+/* Digit / utility buttons — light gray */
+.btn-digit,
+.btn-utility {
+    background-color: #d4d4d4;
+    color: #1a1a1a;
+}
+
+/* Operator buttons — orange */
+.btn-operator {
+    background-color: #e08030;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Wide button (C spans 2 cols, 0 spans 3 cols) */
+.btn-wide {
+    grid-column: span 2;
+}
+
+/* 0 button spans 3 columns */
+.btn-digit.btn-wide {
+    grid-column: span 3;
+}
+
+
+/* ── Hover states ── */
+.btn-digit:hover,
+.btn-utility:hover {
+    background-color: #c0c0c0;
+}
+
+.btn-operator:hover {
+    background-color: #f09040;
+}
+
+/* ── Active / pressed states ── */
+.btn-digit:active,
+.btn-utility:active {
+    background-color: #a8a8a8;
+}
+
+.btn-operator:active {
+    background-color: #c06020;
+}
+
+/* Highlight the active operator button */
+.btn-operator.active-op {
+    background-color: #ffffff;
+    color: #e08030;
+}
+.btn-operator.active-op:hover {
+    background-color: #f5f5f5;
+}
